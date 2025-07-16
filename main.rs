@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::BufReader;
-use std::time::{SystemTime, Duration};
-use chrono::{DateTime, Local, TimeZone, Duration as ChronoDuration};
+use std::time::{SystemTime};
+use chrono::{DateTime, Local, Duration as ChronoDuration};
 use serde::{Deserialize, Serialize};
 use serde_json;
 
@@ -31,7 +31,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let today = datetime.format("%m-%d").to_string();
     
     // Read and parse the dates JSON file
-    let file = File::open("dates.json")?;
+    let file = File::open(".dates.json")?;
     let reader = BufReader::new(file);
     let wrapper: DatesWrapper = serde_json::from_reader(reader)?;
     
